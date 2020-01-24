@@ -3,26 +3,18 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory {
 
-    public static MoodAnalyser createAnalayzer(String value) {
+    public static MoodAnalyser createAnalayzer(String value) throws MoodAnalyserException {
         try {
-            Class<?> moodAnalyserClass = Class.forName("MoodAnalyser");
+            Class<?> moodAnalyserClass = Class.forName("MoodAalyser");
             Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(String.class);
             Object moodObj = moodConstructor.newInstance(value);
             return (MoodAnalyser) moodObj;
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,"Please Enter Proper Class Name");
         }
 
-        return null;
+
     }
 
 }
