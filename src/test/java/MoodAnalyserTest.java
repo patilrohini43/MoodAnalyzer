@@ -20,10 +20,9 @@ public class MoodAnalyserTest {
 
     @Test
     public void givenMoodAnalyserException()  {
-        MoodAnalyser moodAnalyser=new MoodAnalyser(null);
-
+        MoodAnalyser moodAnalyser=new MoodAnalyser("I am in Happy Mood");
         try {
-            moodAnalyser.analyseMood(null);
+            moodAnalyser.analyseMood("I am in Happy Mood");
         }
         catch (MoodAnalyserException e) {
 
