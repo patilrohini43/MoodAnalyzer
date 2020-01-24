@@ -34,8 +34,14 @@ public class MoodAnalyserTest {
 
     @Test
     public void givenMoodAnalaser_ProperReturn_MoodAnalyserObject() {
-        MoodAnalyser moodAnalyser = MoodAnalyserFactory.createAnalayzer("I am in Happy Mood");
-        Assert.assertTrue(new MoodAnalyser("I am in Happy Mood").equals(moodAnalyser));
+        MoodAnalyser moodAnalyser = null;
+        try {
+            moodAnalyser = MoodAnalyserFactory.createAnalayzer("I am in Happy Mood");
+            Assert.assertTrue(new MoodAnalyser("I am in Happy Mood").equals(moodAnalyser));
+        } catch (MoodAnalyserException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
